@@ -1,0 +1,62 @@
+---
+- hosts: prd
+  vars:
+    # TODO Replace nodejs with actual project name + configurable?
+    project_path: /var/www/nodejs
+  tasks:
+    # Fact saves variable on the server itself
+    - name: Set some variable
+      set_fact:
+        release_path: "{{ project_path }}/releases/{{ lookup('pipe','date +%Y%m%d%H%M%S') }}"
+        current_path: "{{ project_path }}/current"
+
+    # Retrieve current release folder in order to delete it after the deploy
+    # Returns full path of symlink
+    - name: Retrieve current release folder
+      command: readlink -f current
+      register: current_release_path
+      ignore_errors: yes
+      args:
+        chdir: "{{ project_path }}"
+
+    # Create release folder where we'll clone our repo
+    - name: Create new folder
+      file:
+        dest={{ release_path }}
+        mode=0755
+        recurse=yes
+        state=directory
+
+    # TODO Alter to own repository
+    - name: Clone the repository
+      git:
+        repo: git@github.com:USERNAME/REPO.git
+        dest: "{{ release_path }}"
+
+    # NOTE Isn't this provisioning instead of a deploy?
+    - name: Update npm
+      npm:
+        path={{ release_path }}
+
+    # Update/create symlink current symlink in order to reflect our newest release folder
+    - name: Update symlink
+      file:
+        src={{ release_path }}
+        dest={{ current_path }}
+        state=link
+
+    # Update pm2 and delete old release folder
+    # TODO Replace server.js with own file
+    - name: Delete old pm2 process
+      command: pm2 delete ws-node
+      ignore_errors: yes
+
+    - name: Start pm2
+      command: pm2 start {{ current_path }}/server.js --name node-app
+
+    # Delete the old release (ommit this step if you want to keep all releases)
+    # Deletes old release folder only if it's different to /var/www/nodejs/current
+    # If the symlink doesn't exist, the path of the older release will be /var/www/nodejs/current = newest release at end of process (only happens at first deploy)
+    - name: Delete old dir
+      shell: rm -rf {{ current_release_path.stdout }}/
+      when: current_release_path.stdout != current_path
