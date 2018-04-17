@@ -1,0 +1,19 @@
+<mat-card>
+  <h2>Please sign in</h2>
+
+  <mat-card-content>
+    <mat-form-field>
+      <input name="email" [(ngModel)]="user.username" type="email" matInput  placeholder="Email address" required autofocus>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="password" [(ngModel)]="user.password" type="password" matInput placeholder="Password" required autofocus>
+    </mat-form-field>
+
+    <mat-checkbox>Remember me</mat-checkbox>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button (click)="validateLogin();" mat-button>Login</button>
+  </mat-card-actions>
+</mat-card>
