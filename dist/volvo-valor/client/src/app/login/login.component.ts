@@ -1,3 +1,4 @@
+// Login prompt logic
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { User } from '../models/user.model';
@@ -16,10 +17,12 @@ export class LoginComponent {
     this.user = new User();
   }
 
+  // Checks if a username and password is entered
   validateLogin() {
     if(this.user.username && this.user.password) {
-      this.loginService.validateLogin(this.user).subscribe(result => {
-        console.log('result is ', result);
+      this.loginService.validateLogin(this.user).subscribe(
+        result => {
+          console.log('result is ', result);
       }, error => {
         console.log('error is', error);
       });

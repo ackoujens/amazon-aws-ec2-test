@@ -1,14 +1,17 @@
+// General imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ROUTING } from './app.routing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Component imports
 import { RootComponent } from './root/root.component';
 import { LoginComponent } from './login/login.component';
 
+// Google Material imports
 import { MatInputModule, MatButtonModule, MatFormFieldModule, MatCheckboxModule, MatCardModule, MatToolbarModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,16 +23,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ROUTING,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
 
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     MatCheckboxModule,
     MatCardModule,
-    MatToolbarModule,
-    BrowserAnimationsModule
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [RootComponent]
 })
-export class AppModule { }
+export class AppModule {}

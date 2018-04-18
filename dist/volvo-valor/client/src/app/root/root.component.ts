@@ -1,3 +1,4 @@
+// Root component logic
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: 'root.component.html',
   styleUrls: ['root.component.scss']
 })
-export class RootComponent {
-
-}
+export class RootComponent {}
