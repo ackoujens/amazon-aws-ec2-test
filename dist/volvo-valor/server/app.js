@@ -7,14 +7,14 @@ const mongoose = require('mongoose');
 
 // Models
 const User = require('./model/user');
-db.createCollection('user');
 
-// Test records
+/* Test records (invoke mongo)
+db.createCollection('user');
 db.user.insert({
   name: 'roy agasthyan',
   username: 'roy',
   password: '123'
-});
+});*/
 
 // Settings
 const url = 'mongodb://localhost/blogDb';

@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Component imports
 import { RootComponent } from './root/root.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 // Google Material imports
 import { MatInputModule, MatButtonModule, MatFormFieldModule, MatCheckboxModule, MatCardModule, MatToolbarModule } from '@angular/material';
@@ -16,7 +17,8 @@ import { MatInputModule, MatButtonModule, MatFormFieldModule, MatCheckboxModule,
 @NgModule({
   declarations: [
     RootComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
