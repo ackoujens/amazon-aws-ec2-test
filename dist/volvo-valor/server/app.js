@@ -5,6 +5,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+// Models
+const User = require('./model/user');
+db.createCollection('user');
+
+// Test records
+db.user.insert({
+  name: 'roy agasthyan',
+  username: 'roy',
+  password: '123'
+});
+
 // Settings
 const url = 'mongodb://localhost/blogDb';
 
@@ -25,9 +36,24 @@ app.get('/api/user/login', (req, res) => {
 // User login - POST - create a new resource
 // connect to the MongoDB database
 app.post('/api/user/login', (req, res) => {
-  mongoose.connect(url, function(err){
+  mongoose.connect(url,{ useMongoClient: true } ,function(err){
     if(err) throw err;
-    console.log('Connected successfully, username is ', req.body.username, ' password is ', req.body.password);
+    User.find({
+      username: req.body.username, password: req.body.password
+    }, function(err, user){
+      if(err) throw err;
+      if(user.length === 1){
+        return res.status(200).json({
+          status: 'success',
+          data: user
+        })
+      } else {
+        return res.status(200).json({
+          status: 'fail',
+          message: 'Login failed'
+        })
+      }
+    })
   });
 });
 
