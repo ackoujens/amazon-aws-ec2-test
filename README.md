@@ -15,6 +15,9 @@ https://codelike.pro/deploy-nodejs-app-with-ansible-git-pm2/
 ### Windows FTP (Putty)
 https://linuxacademy.com/howtoguides/posts/show/topic/17385-use-putty-to-access-ec2-linux-instances-via-ssh-from-windows
 
+# Create AWS instances in ansible
+https://8thlight.com/blog/sarah-sunday/2017/03/14/ansible-aws-deployment.html
+
 
 # Deploy command
 To launch your deploy, you can run ansible-playbook deploy/deploy.yml, or, like I set in my project, you can write an npm script in your package.json (where all dependencies are specified), which allows you to write npm run deploy that is more pretty.

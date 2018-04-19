@@ -1,0 +1,30 @@
+---
+- hosts: tag_Name_servername
+  vars:
+    app_key: Test
+    ec2ec2_instance_type: t2 micro
+    ec2_aws_region: eu-west-2a
+    security_group_id: sg-0c2df67
+    amazon_ami: ubuntu-xenial-16.04-amd64-server-dotnetcore-2018.03.27 (ami-6db9580a)
+    app_name: test
+    ebs_volume_size: 100
+    vpc_submit_id: vpc-9dba6ef5
+  tasks:
+    - ec2:
+      key_name: "{{ app_key }}"
+      group: server
+      instance_type: "{{ ec2_instance_type }}"
+      region: "{{ ec2_aws_region }}"
+      group: "{{ security_group_id }}"
+      image: "{{ amazon_ami }}"
+      wait: yes
+      wait_timeout: 500
+      instance_tags:
+        name: {{ app_name }}-server
+      monitoring: yes
+      volumes:
+        - device_name: /dev/sda1
+          volume_size: "{{ ebs_volume_size }}"
+          delete_on_termination: true
+      vpc_subnet_id: "{{ vpc_submit_id }}"
+      assign_public_ip: yes
