@@ -1,0 +1,4 @@
+# Create EC2 instance
+- name: Create instances
+  ec2:
+    region: "{{ }}"
