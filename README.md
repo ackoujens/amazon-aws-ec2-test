@@ -19,6 +19,10 @@ https://linuxacademy.com/howtoguides/posts/show/topic/17385-use-putty-to-access-
 https://8thlight.com/blog/sarah-sunday/2017/03/14/ansible-aws-deployment.html
 https://www.youtube.com/watch?v=QcE0cYAzc1w
 
+# Storing AWS keys
+https://youtu.be/avbRuHhomso?t=5m42s
+https://docs.ansible.com/ansible/devel/modules/aws_ssm_parameter_store_module.html
+
 # Deploy command
 To launch your deploy, you can run ansible-playbook deploy/deploy.yml, or, like I set in my project, you can write an npm script in your package.json (where all dependencies are specified), which allows you to write npm run deploy that is more pretty.
 
