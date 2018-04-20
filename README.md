@@ -17,7 +17,7 @@ https://linuxacademy.com/howtoguides/posts/show/topic/17385-use-putty-to-access-
 
 # Create AWS instances in ansible
 https://8thlight.com/blog/sarah-sunday/2017/03/14/ansible-aws-deployment.html
-https://www.google.be/search?q=Use+ansible+to+create+ec2+instance&oq=Use+ansible+to+create+ec2+instance&aqs=chrome..69i57.6495j0j4&sourceid=chrome&ie=UTF-8#kpvalbx=1
+https://www.youtube.com/watch?v=QcE0cYAzc1w
 
 # Deploy command
 To launch your deploy, you can run ansible-playbook deploy/deploy.yml, or, like I set in my project, you can write an npm script in your package.json (where all dependencies are specified), which allows you to write npm run deploy that is more pretty.
@@ -33,3 +33,6 @@ https://coursetro.com/posts/code/84/Setting-up-an-Angular-4-MEAN-Stack-(Tutorial
 https://codehandbook.org/creating-a-web-app-using-angular-4-mongodb/
 https://code.tutsplus.com/tutorials/creating-a-blogging-app-using-angular-mongodb-home--cms-30129
 https://devcenter.heroku.com/articles/mean-apps-restful-api
+
+# Boto needs to be installed
+python -c "import boto"
