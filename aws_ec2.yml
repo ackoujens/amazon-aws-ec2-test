@@ -1,6 +1,0 @@
-# Instance creation
-- hosts: localhost
-  connection: local
-  roles:
-    - ec2
-  tags: ec2_create
