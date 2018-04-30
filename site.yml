@@ -10,9 +10,19 @@
     - create
 
 - name: Add user keys
-  hosts: ec2_hosts
-  sudo: yes
-  sudo_user: root
+  hosts: all
+  #become: yes
+  #become_user: root
   remote_user: ubuntu
   roles:
     - users
+
+# - name: Add user keys
+#   hosts: ec2_hosts
+#   connection: local
+#   gather_facts: false
+#   become: yes
+#   become_user: root
+#   remote_user: ubuntu
+#   roles:
+#     - users

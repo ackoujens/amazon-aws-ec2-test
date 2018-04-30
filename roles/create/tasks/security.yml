@@ -5,16 +5,16 @@
     description: "{{ project_name }} security group"
     region: "{{ aws_region }}"
     rules:
-      - proto: tcp
+      - proto: tcp # ssh
         from_port: 22
         to_port: 22
         cidr_ip: 0.0.0.0/0
-      - proto: tcp
+      - proto: tcp # http
         from_port: 80
         to_port: 80
         cidr_ip: 0.0.0.0/0
       - proto: tcp
-        from_port: 443
+        from_port: 443 # https
         to_port: 443
         cidr_ip: 0.0.0.0/0
     rules_egress:
@@ -29,5 +29,8 @@
   register: ec2_key
 
 - name: Save private key
-  copy: content="{{ ec2_key.private_key }}" dest="./aws-{{ env }}-private.pem" mode=0600
+  copy:
+    content="{{ ec2_key.key.private_key }}"
+    dest="./aws-{{ env }}-private.pem"
+    mode=0600
   when: ec2_key.changed
