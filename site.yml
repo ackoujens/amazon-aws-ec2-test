@@ -1,6 +1,6 @@
 ---
 - name: Create AWS instance
-  hosts: 127.0.0.1
+  hosts: localhost
   connection: local
   gather_facts: false
   remote_user: ubuntu
@@ -16,13 +16,3 @@
   remote_user: ubuntu
   roles:
     - users
-
-# - name: Add user keys
-#   hosts: ec2_hosts
-#   connection: local
-#   gather_facts: false
-#   become: yes
-#   become_user: root
-#   remote_user: ubuntu
-#   roles:
-#     - users
