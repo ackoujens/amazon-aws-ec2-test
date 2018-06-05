@@ -1,0 +1,32 @@
+# FIXME
+# Checking for guest additions in VM...
+#    default: The guest additions on this VM do not match the installed version of
+#    default: VirtualBox! In most cases this is fine, but in rare cases it can
+#    default: prevent things such as shared folders from working properly. If you see
+#    default: shared folder errors, please make sure the guest additions within the
+#    default: virtual machine match the version of VirtualBox you have installed on
+#    default: your host and reload your VM.
+#    default: 
+#    default: Guest Additions Version: 4.3.36
+#    default: VirtualBox Version: 5.2
+
+# FIX Is misreporting
+# Check after completion for "vagrant vbguest"
+# https://github.com/dotless-de/vagrant-vbguest/issues/202
+
+---
+- name: Create a {{ application_name }} virtual machine via vagrant
+  hosts: all
+  become: yes
+  become_user: root
+  remote_user: vagrant
+  vars:
+    - setup_git_repo: yes
+    - update_apt_cache: yes
+  vars_files:
+    - env_vars/local.yml
+
+  roles:
+    - base
+    - db
+    - web

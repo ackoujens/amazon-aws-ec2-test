@@ -1,0 +1,41 @@
+---
+- name: add apt key for nodesource
+  apt_key: 
+    #url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    url: http://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    validate_certs: no
+
+- name: add repo for nodesource
+  apt_repository:
+    repo: 'deb https://deb.nodesource.com/node_0.10 {{ ansible_distribution_release }} main'
+    update_cache: yes
+
+- name: Ensure bash, OpenSSl, and libssl are the latest versions
+  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
+  with_items:
+    - bash
+    - openssl
+    - libssl-dev
+    - libssl-doc
+  tags: packages
+
+- name: Install base packages
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=latest
+  with_items:
+    - build-essential
+    - ntp
+    - htop
+    - git
+    - nodejs
+    #- npm -> already installed since nodejs v0.10.15
+  tags: packages
+
+# - name: Install packages via npm
+#   npm: name={{ item }} global=yes
+#   with_items:
+#     - pm2
+#     - yo
+#     - bower
+#     - grunt-cli
+#     - gulp
+#   tags: packages
