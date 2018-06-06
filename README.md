@@ -22,6 +22,8 @@ ansible-playbook site.yml
 
 ## Troubleshooting
 - package version issues -> `sudo -H pip install PACKAGE --upgrade`
+- Git will not play nice with nested repositories
+Use `git submodule add <url> dist/meanproj/meantest` instead
 
 ## Resources
 ### Deploy Github project with ansible
