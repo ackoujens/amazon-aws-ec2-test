@@ -7,7 +7,7 @@ node_port: 3000
 server_file: server.js
 
 # Git settings.
-git_repo: git@github.com:ackoujens/volvo-valor.git
+git_repo: https://github.com/ackoujens/volvo-valor
 
 # Application settings.
 nodeapp_user: "appusr"
