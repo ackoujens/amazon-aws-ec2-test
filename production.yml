@@ -1,8 +1,8 @@
 ---
 - name: Create a {{ application_name }} virtual machine via vagrant
   hosts: all
-  sudo: yes
-  sudo_user: root
+  become: yes
+  become_user: root
   remote_user: ubuntu
   vars:
     - setup_git_repo: no
