@@ -30,7 +30,7 @@
     # TODO Alter to own repository
     - name: Clone the repository
       git:
-        repo: git@github.com:ackoujens/amazon-aws-ex2-test.git
+        repo: git@github.com:ackoujens/volvo-valor.git
         dest: "{{ release_path }}"
 
     # NOTE Isn't this provisioning instead of a deploy?
@@ -52,7 +52,7 @@
       ignore_errors: yes
 
     - name: Start pm2
-      command: pm2 start {{ current_path }}/server.js --name test-app
+      command: pm2 start {{ current_path }}/client/server.js --name test-app
 
     # Delete the old release (ommit this step if you want to keep all releases)
     # Deletes old release folder only if it's different to /var/www/nodejs/current

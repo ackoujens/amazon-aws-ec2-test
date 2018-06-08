@@ -5,7 +5,7 @@ nginx_server_name: mean_todo
 
 
 # Git settings.
-git_repo: git@github.com:scotch-io/node-todo.git
+git_repo: git@github.com:ackoujens/volvo-valor.git
 
 # Application settings.
 nodeapp_user: "appusr"
