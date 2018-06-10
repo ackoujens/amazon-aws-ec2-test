@@ -13,7 +13,7 @@ nodeapp_group: "appgrp"
 project_name: "meanproj"
 application_name: meantest
 env_path: "/webapps/ansible/{{ project_name }}/"
-app_path: "{{ env_path }}/{{ application_name }}"
+app_path: "{{ env_path }}{{ application_name }}"
 application_log_dir: "{{ env_path }}/logs"
 
 # Nginx settings
