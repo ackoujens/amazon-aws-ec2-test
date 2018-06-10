@@ -1,6 +1,6 @@
 ---
 - name: PM2 | Install PM2
-  sudo: yes
+  become: yes
   npm: name=pm2 global=yes
   tags: pm2
 
