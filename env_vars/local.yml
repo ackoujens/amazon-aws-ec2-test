@@ -1,8 +1,12 @@
+# Variable pool used for local dev environment
 ---
+# Node
+nodejs_ppa: "ppa:chris-lea/node.js"
+apt_cache_valid_time: 86400
 
 # Nginx settings.
 nginx_server_name: 2.2.2.2
-nginx_hostname: example.com
+nginx_hostname: volvovalor.com
 node_port: 3000
 server_file: server.js
 
@@ -12,9 +16,9 @@ git_repo: https://github.com/ackoujens/volvo-valor
 # Application settings.
 nodeapp_user: "appusr"
 nodeapp_group: "appgrp"
-project_name: "meanproj"
-application_name: meantest
-env_path: "/webapps/ansible/{{ project_name }}/"
+project_name: "ansible"
+application_name: volvovalor
+env_path: "/webapps/{{ project_name }}/"
 
 app_path: "{{ env_path }}{{ application_name }}"
 application_log_dir: "{{ env_path }}/logs"

@@ -7,11 +7,16 @@
 - include: set_file_permissions.yml
   tags: deploy
 
-- include: express.yml
+- include: build_project.yml
   tags: deploy
+
+# Not needed yet since running Angular app only in Nginx
+#- include: express.yml
+#  tags: deploy
 
 - include: nginx.yml
   tags: nginx
 
-- include: pm2.yml
-  tags: deploy
+# Not needed yet since running Angular app only in Nginx
+#- include: pm2.yml
+#  tags: deploy

@@ -19,6 +19,14 @@ sudo pip install boto3 --ignore-installed six
 
 ## How to use
 
+### Create/Run Vagrant test environment
+
+`vagrant up`
+
+### Destroy Vagrant environment
+
+`vagrant destroy`
+
 ### Run entire playbook
 
 ansible-playbook site.yml

@@ -9,6 +9,8 @@ server {
 
     server_name {{ nginx_server_name }};
 
+    root /var/www/example.com/html/{{ application_name }};
+
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml
         application/xml+rss text/javascript image/svg+xml application/vnd.ms-fontobject;
 

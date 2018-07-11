@@ -1,0 +1,24 @@
+# Build project from source
+---
+- name: Open up rights to be able to execute next step
+  file: 
+    dest: "{{ app_path }}" 
+    owner: "nobody" 
+    #group: apache 
+    mode: '777'
+    recurse: yes
+
+# FIXME Blocks on this part of the code
+# Had a fix for it but blew it since I forgot to add it to the script
+- name: Install packages based on package.json
+  npm:
+    path: "{{ app_path }}/client"
+
+- name: Build Angular project for TST server
+#  command: ng build --prod --aot --env:prod
+  become: yes
+  command: ng build
+  args:
+    chdir: "{{ app_path }}/client --output-path=/var/www/html/{{ application_name }}/ --delete-output-path=false"
+#  environment:
+#    PATH: /sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/home/jeff/.nvm/versions/node/v7.9.0/bin/

@@ -1,4 +1,6 @@
 ---
+# Need PM2 for when an express server needs to run
+# Is not required for Angular application because it gets built and deployed to be hosted by Nginx
 - name: PM2 | Install PM2
   become: yes
   npm: name=pm2 global=yes

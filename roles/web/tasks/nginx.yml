@@ -1,4 +1,6 @@
 ---
+# Nginx will host the built Angular project
+# When the Angular project is built it needs to get placed into the sites-available directorys
 - name: Nginx | Install nginx
   become: yes
   apt: pkg=nginx
@@ -6,7 +8,7 @@
 
 - name: Nginx | Setup reverse proxy
   become: yes
-  template: src=nginx_site_config.j2 dest=/etc/nginx/sites-available/
+  template: src=nginx_site_config.j2 dest=/etc/nginx/sites-available/{{ nginx_hostname }}
   tags: nginx
 
 - name: Nginx | Start nginx
