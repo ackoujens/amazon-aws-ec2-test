@@ -1,5 +1,7 @@
 # Amazon AWS EC2 Test
 
+Note: Stepped down from AWS since this formula would end up in me paying up after a year of free tier
+
 ## Prerequisites
 
 - [Virtualbox](https://www.virtualbox.org)
